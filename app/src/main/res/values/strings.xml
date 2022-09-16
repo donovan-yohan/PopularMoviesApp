@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Popular Movies Today</string>
+    <string name="no_results">No results, sorry!</string>
+    <string name="try_again">Try Again</string>
+    <string name="network_image_error">Image failed to load</string>
+    <string name="network_error">Failed to load</string>
+    <string name="overview_error">No overview available</string>
+    <string name="unknown">Unknown</string>
+</resources>
