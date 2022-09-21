@@ -8,6 +8,7 @@ import javax.inject.Singleton
 
 interface DataRefreshManager {
     fun shouldRefresh(): Boolean
+    fun updateLastRefreshTime()
 }
 
 @Module
