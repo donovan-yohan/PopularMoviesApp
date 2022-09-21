@@ -11,7 +11,6 @@ import com.example.popularmoviesapp.repository.network.ApiConstants.PAGE_RESULTS
 import com.example.popularmoviesapp.repository.network.MovieRemoteMediator
 import com.example.popularmoviesapp.service.model.Movie
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.map
 import javax.inject.Inject
 

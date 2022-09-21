@@ -17,18 +17,18 @@ class DataRefreshManagerImpl @Inject constructor(context: Context) : DataRefresh
     override fun shouldRefresh(): Boolean {
         val lastDataFetchTime: Long = sharedPreferences.getLong(lastDataFetchTimeKey, 0)
         val currentTime = System.currentTimeMillis()
+        return currentTime - lastDataFetchTime > refreshInterval
+    }
 
-        return if (currentTime - lastDataFetchTime > refreshInterval) {
-            val editor: SharedPreferences.Editor = sharedPreferences.edit()
-            editor.putLong(
-                lastDataFetchTimeKey,
-                LocalDate.now().atStartOfDay().toEpochSecond(ZoneOffset.UTC) * 1000
-            )
-            editor.apply()
-            true
-        } else {
-            false
-        }
+    override fun updateLastRefreshTime() {
+        val editor: SharedPreferences.Editor = sharedPreferences.edit()
+        val today = LocalDate.now().atStartOfDay().toInstant(ZoneOffset.UTC).toEpochMilli()
+
+        editor.putLong(
+            lastDataFetchTimeKey,
+            today
+        )
+        editor.apply()
     }
 
 }
