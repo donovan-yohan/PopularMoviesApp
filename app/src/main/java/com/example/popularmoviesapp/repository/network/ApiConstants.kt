@@ -10,7 +10,7 @@ object ApiConstants {
     const val API_PARAM = "api_key"
 
     // ideally this should be in a keystore, definitely somewhere more secure
-    const val API_KEY = "9458f20eaffe3dffdbfae1d73e624a9e"
+    const val API_KEY = ""
 
     const val IMG_BASE_URL = "https://image.tmdb.org/t/p/"
     const val POSTER_W185 = "w185"
