@@ -2,6 +2,7 @@ package com.example.popularmoviesapp.repository.local
 
 import android.content.Context
 import androidx.room.Room
+import com.example.popularmoviesapp.repository.local.daos.GenreDao
 import com.example.popularmoviesapp.repository.local.daos.MovieDao
 import dagger.Module
 import dagger.Provides
@@ -15,14 +16,20 @@ import javax.inject.Singleton
 class DatabaseModule {
     @Singleton
     @Provides
-    fun provideDatabase(@ApplicationContext appContext: Context): MovieDatabase {
-        return Room.databaseBuilder(appContext, MovieDatabase::class.java, "movies")
+    fun provideDatabase(@ApplicationContext appContext: Context): AppDatabase {
+        return Room.databaseBuilder(appContext, AppDatabase::class.java, "db")
             .allowMainThreadQueries().build()
     }
 
     @Singleton
     @Provides
-    fun provideMovieDao(movieDatabase: MovieDatabase): MovieDao {
-        return movieDatabase.movieDao()
+    fun provideMovieDao(db: AppDatabase): MovieDao {
+        return db.movieDao()
+    }
+
+    @Singleton
+    @Provides
+    fun provideGenreDao(db: AppDatabase): GenreDao {
+        return db.genreDao()
     }
 }

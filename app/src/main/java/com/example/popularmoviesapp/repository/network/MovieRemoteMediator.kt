@@ -1,9 +1,9 @@
 package com.example.popularmoviesapp.repository.network
 
 import androidx.paging.*
-import com.example.popularmoviesapp.repository.DataRefreshManager
-import com.example.popularmoviesapp.repository.MovieDataSource
-import com.example.popularmoviesapp.repository.local.model.LocalMovie
+import com.example.popularmoviesapp.repository.data.movie.DataRefreshManager
+import com.example.popularmoviesapp.repository.data.movie.MovieDataSource
+import com.example.popularmoviesapp.repository.local.entities.LocalMovie
 import com.example.popularmoviesapp.repository.network.ApiConstants.PAGES_CACHED
 import com.example.popularmoviesapp.repository.network.ApiConstants.PAGE_END
 import com.example.popularmoviesapp.repository.network.ApiConstants.PAGE_RESULTS

@@ -17,10 +17,18 @@ import javax.inject.Singleton
 class ApiModule {
     @Provides
     @Singleton
-    fun provideApi(builder: Retrofit.Builder): MoviesApi {
+    fun provideMoviesApi(builder: Retrofit.Builder): MoviesApi {
         return builder
             .build()
             .create(MoviesApi::class.java)
+    }
+
+    @Provides
+    @Singleton
+    fun provideGenresApi(builder: Retrofit.Builder): GenresApi {
+        return builder
+            .build()
+            .create(GenresApi::class.java)
     }
 
     @Provides

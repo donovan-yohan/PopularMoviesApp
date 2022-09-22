@@ -1,7 +1,7 @@
 package com.example.popularmoviesapp.service
 
 import androidx.paging.PagingData
-import com.example.popularmoviesapp.repository.MovieRepository
+import com.example.popularmoviesapp.repository.data.movie.MovieRepository
 import com.example.popularmoviesapp.service.model.Movie
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject

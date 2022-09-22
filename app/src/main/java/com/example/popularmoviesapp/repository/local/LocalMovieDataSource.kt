@@ -4,9 +4,9 @@ import androidx.paging.ExperimentalPagingApi
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
-import com.example.popularmoviesapp.repository.MovieDataSource
+import com.example.popularmoviesapp.repository.data.movie.MovieDataSource
 import com.example.popularmoviesapp.repository.local.daos.MovieDao
-import com.example.popularmoviesapp.repository.local.model.LocalMovie
+import com.example.popularmoviesapp.repository.local.entities.LocalMovie
 import com.example.popularmoviesapp.repository.network.ApiConstants.PAGE_RESULTS
 import com.example.popularmoviesapp.repository.network.MovieRemoteMediator
 import com.example.popularmoviesapp.service.model.Movie
@@ -72,6 +72,7 @@ class LocalMovieDataSource @Inject constructor(
             if (it !== null) {
                 it.page = page
                 movieDao.insertMovie(it.toLocal())
+                // TODO: add genres to movie_genre table
             }
         }
     }

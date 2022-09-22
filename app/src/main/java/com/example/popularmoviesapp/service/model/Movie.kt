@@ -1,12 +1,13 @@
 package com.example.popularmoviesapp.service.model
 
-import com.example.popularmoviesapp.repository.local.model.LocalMovie
+import com.example.popularmoviesapp.repository.local.entities.LocalMovie
 
 data class Movie(
     val id: Int,
     val adult: Boolean?,
     val backdrop_path: String?,
     val budget: Long?,
+    val genre_ids: List<Int>?,
     val overview: String?,
     val poster_path: String?,
     val release_date: String?,

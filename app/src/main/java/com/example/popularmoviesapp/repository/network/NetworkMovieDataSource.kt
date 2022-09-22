@@ -3,8 +3,8 @@ package com.example.popularmoviesapp.repository.network
 import android.content.Context
 import androidx.paging.ExperimentalPagingApi
 import androidx.paging.PagingData
-import com.example.popularmoviesapp.repository.MovieDataSource
-import com.example.popularmoviesapp.repository.local.model.LocalMovie
+import com.example.popularmoviesapp.repository.data.movie.MovieDataSource
+import com.example.popularmoviesapp.repository.local.entities.LocalMovie
 import com.example.popularmoviesapp.service.model.Movie
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.emptyFlow

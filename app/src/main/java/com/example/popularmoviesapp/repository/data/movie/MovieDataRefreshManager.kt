@@ -1,4 +1,4 @@
-package com.example.popularmoviesapp.repository
+package com.example.popularmoviesapp.repository.data.movie
 
 import dagger.Binds
 import dagger.Module
@@ -16,5 +16,5 @@ interface DataRefreshManager {
 internal abstract class DataRefreshManagerBinding {
     @Singleton
     @Binds
-    abstract fun bindDataRefreshManager(dataRefreshManagerIml: DataRefreshManagerImpl): DataRefreshManager
+    abstract fun bindDataRefreshManager(dataRefreshManagerIml: MovieDataRefreshManagerImpl): DataRefreshManager
 }

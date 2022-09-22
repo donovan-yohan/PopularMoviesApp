@@ -1,8 +1,10 @@
-package com.example.popularmoviesapp.repository
+package com.example.popularmoviesapp.repository.data.movie
 
 import androidx.paging.ExperimentalPagingApi
 import androidx.paging.PagingData
 import androidx.paging.map
+import com.example.popularmoviesapp.repository.data.genre.GenreDataSource
+import com.example.popularmoviesapp.repository.data.genre.LocalGenreDataSourceModule
 import com.example.popularmoviesapp.repository.network.MovieRemoteMediator
 import com.example.popularmoviesapp.service.model.Movie
 import kotlinx.coroutines.flow.Flow
@@ -14,6 +16,8 @@ class MovieRepositoryImpl @Inject constructor(
     private val localMovieDataSource: MovieDataSource,
     @NetworkMovieDataSourceModule
     private val networkMovieDataSource: MovieDataSource,
+    @LocalGenreDataSourceModule
+    private val localGenreDataSource: GenreDataSource,
     dataRefreshManagerImpl: DataRefreshManager
 ) : MovieRepository {
     @ExperimentalPagingApi

@@ -1,4 +1,4 @@
-package com.example.popularmoviesapp.repository.local.model
+package com.example.popularmoviesapp.repository.local.entities
 
 import androidx.room.Entity
 import androidx.room.Index
@@ -7,10 +7,10 @@ import com.example.popularmoviesapp.service.model.Movie
 
 @Entity(
     tableName = "movies",
-    indices = [Index(value = ["id"], unique = true)]
+    indices = [Index(value = ["movie_id"], unique = true)]
 )
 data class LocalMovie(
-    @PrimaryKey(autoGenerate = true) val id: Int,
+    @PrimaryKey(autoGenerate = true) val movie_id: Int,
     val adult: Boolean?,
     val backdrop_path: String?,
     val budget: Long?,
@@ -25,10 +25,11 @@ data class LocalMovie(
     var page: Int = 0,
 ) {
     fun toDomain() = Movie(
-        id,
+        movie_id,
         adult,
         backdrop_path,
         budget,
+        emptyList(),
         overview,
         poster_path,
         release_date,

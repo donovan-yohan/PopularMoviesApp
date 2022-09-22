@@ -1,4 +1,4 @@
-package com.example.popularmoviesapp.repository
+package com.example.popularmoviesapp.repository.data.movie
 
 import com.example.popularmoviesapp.repository.local.LocalMovieDataSource
 import com.example.popularmoviesapp.repository.network.NetworkMovieDataSource

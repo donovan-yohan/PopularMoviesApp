@@ -26,7 +26,9 @@ import kotlin.math.floor
 @Composable
 fun DetailScreen(movie_id: Int?, navController: NavController, viewModel: DetailViewModel) {
     viewModel.getMovieById(movie_id)
+    viewModel.getGenres(null)
     val movie: Movie? by viewModel.movie.collectAsState(null)
+    val genres: List<String?> by viewModel.genres.collectAsState(listOf())
 
     Scaffold(
         topBar = {
@@ -35,7 +37,7 @@ fun DetailScreen(movie_id: Int?, navController: NavController, viewModel: Detail
                 navController,
             )
         }) { innerPadding ->
-        DetailScreenBody(Modifier.padding(innerPadding), movie)
+        DetailScreenBody(Modifier.padding(innerPadding), movie, genres)
     }
 }
 
@@ -72,6 +74,7 @@ fun DetailTopAppBar(
 fun DetailScreenBody(
     modifier: Modifier,
     movie: Movie?,
+    genres: List<String?>,
 ) {
     if (movie == null) {
         Box(Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
@@ -109,6 +112,10 @@ fun DetailScreenBody(
             }
             Text(
                 movie.overview ?: stringResource(R.string.overview_error),
+            )
+            Text(
+                "Genres: ${genres.joinToString(", ")}",
+                Modifier.padding(top = 16.dp)
             )
         }
     }

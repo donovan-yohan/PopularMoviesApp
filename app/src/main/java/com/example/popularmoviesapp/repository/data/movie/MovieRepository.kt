@@ -1,4 +1,4 @@
-package com.example.popularmoviesapp.repository
+package com.example.popularmoviesapp.repository.data.movie
 
 import androidx.paging.PagingData
 import com.example.popularmoviesapp.service.model.Movie

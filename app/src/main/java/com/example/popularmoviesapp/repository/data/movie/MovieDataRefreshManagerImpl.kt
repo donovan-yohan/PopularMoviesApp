@@ -1,4 +1,4 @@
-package com.example.popularmoviesapp.repository
+package com.example.popularmoviesapp.repository.data.movie
 
 import android.content.Context
 import android.content.SharedPreferences
@@ -8,7 +8,7 @@ import java.time.ZoneOffset
 import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 
-class DataRefreshManagerImpl @Inject constructor(context: Context) : DataRefreshManager {
+class MovieDataRefreshManagerImpl @Inject constructor(context: Context) : DataRefreshManager {
     // popular movies updates daily
     private val refreshInterval: Long = TimeUnit.DAYS.toMillis(1)
     private val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context)

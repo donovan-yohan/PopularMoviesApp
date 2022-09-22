@@ -2,19 +2,19 @@ package com.example.popularmoviesapp.repository.local.daos
 
 import androidx.paging.PagingSource
 import androidx.room.*
-import com.example.popularmoviesapp.repository.local.model.LocalMovie
+import com.example.popularmoviesapp.repository.local.entities.LocalMovie
 import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface MovieDao {
-    @Query("SELECT movies.id, title, poster_path, overview, page FROM movies")
+    @Query("SELECT movies.movie_id, title, poster_path, overview, page FROM movies")
     fun getPopularMovies(): Flow<List<LocalMovie>>
 
-    @Query("SELECT movies.id, title, poster_path, overview, page FROM movies ORDER BY page ASC")
+    @Query("SELECT movies.movie_id, title, poster_path, overview, page FROM movies ORDER BY page ASC")
     fun getPopularMoviesPagingSource(): PagingSource<Int, LocalMovie>
 
-    @Query("SELECT * FROM movies WHERE id= :id")
-    fun getMovieById(id: Int): Flow<LocalMovie?>
+    @Query("SELECT * FROM movies WHERE movie_id= :movie_id")
+    fun getMovieById(movie_id: Int): Flow<LocalMovie?>
 
     @Transaction
     @Query("DELETE FROM movies")
@@ -28,6 +28,6 @@ interface MovieDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertMovies(movies: List<LocalMovie>): List<Long>
 
-    @Query("SELECT COUNT(id) FROM movies")
+    @Query("SELECT COUNT(movie_id) FROM movies")
     suspend fun countMovies(): Int
 }
