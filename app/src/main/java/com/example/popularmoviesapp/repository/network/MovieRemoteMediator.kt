@@ -48,6 +48,7 @@ class MovieRemoteMediator @Inject constructor(
                     loadSize -= PAGE_RESULTS
                 }
                 if (dataRefreshManagerImpl.shouldRefresh()) {
+                    dataRefreshManagerImpl.updateLastRefreshTime()
                     movieLocalDataSource.refreshMovies(movieList)
                 } else {
                     movieLocalDataSource.addNewPopularMovies(movieList)

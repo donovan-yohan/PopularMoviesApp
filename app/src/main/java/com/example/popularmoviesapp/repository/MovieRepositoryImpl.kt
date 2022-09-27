@@ -14,7 +14,7 @@ class MovieRepositoryImpl @Inject constructor(
     private val localMovieDataSource: MovieDataSource,
     @NetworkMovieDataSourceModule
     private val networkMovieDataSource: MovieDataSource,
-    private val dataRefreshManagerImpl: DataRefreshManager
+    dataRefreshManagerImpl: DataRefreshManager
 ) : MovieRepository {
     @ExperimentalPagingApi
     val movieRemoteMediator = MovieRemoteMediator(
@@ -25,9 +25,6 @@ class MovieRepositoryImpl @Inject constructor(
 
     @ExperimentalPagingApi
     override suspend fun getMostPopularMovies(): Flow<PagingData<Movie>> {
-        if (dataRefreshManagerImpl.shouldRefresh()) {
-            reloadMovies()
-        }
         val mostPopularMovies =
             localMovieDataSource.getPagedMovies(movieRemoteMediator).map { pagingData ->
                 pagingData.map {
@@ -45,7 +42,7 @@ class MovieRepositoryImpl @Inject constructor(
     override suspend fun getMovieById(movieId: Int): Flow<Movie?> {
         val fullMovieDataFlow = localMovieDataSource.getMovieById(movieId)
             .map {
-                if (it == null || it.revenue == null || it.runtime == null || it.budget == null || dataRefreshManagerImpl.shouldRefresh()) {
+                if (it == null || it.revenue == null || it.runtime == null || it.budget == null) {
                     insertNewMovieDetailToLocal(movieId, it?.page)
                 }
                 it

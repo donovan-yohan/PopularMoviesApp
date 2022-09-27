@@ -17,6 +17,7 @@ interface MovieDao {
     fun getMovieById(id: Int): Flow<LocalMovie?>
 
     @Transaction
+    @Query("DELETE FROM movies")
     suspend fun refreshMovies(movies: List<LocalMovie>): List<Long> {
         return insertMovies(movies)
     }
