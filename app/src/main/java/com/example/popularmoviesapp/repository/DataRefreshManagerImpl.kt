@@ -15,7 +15,8 @@ class DataRefreshManagerImpl @Inject constructor(context: Context) : DataRefresh
     private val lastDataFetchTimeKey = "lastDataFetchTime"
 
     override fun shouldRefresh(): Boolean {
-        val lastDataFetchTime: Long = sharedPreferences.getLong(lastDataFetchTimeKey, 0)
+        val lastDataFetchTime: Long =
+            sharedPreferences.getLong(lastDataFetchTimeKey, Long.MAX_VALUE)
         val currentTime = System.currentTimeMillis()
 
         return if (currentTime - lastDataFetchTime > refreshInterval) {
